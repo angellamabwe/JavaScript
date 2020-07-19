@@ -1,0 +1,17 @@
+function getWeather(woeid){
+            fetch(`https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/${woeid}/`)
+            .then(result => {
+            // console.log(result);
+            return result.json(); //the JSON method returns a promise
+            })
+            .then(data => {
+                console.log(data);
+                const today = data.consolidated_weather[0];
+                console.log(`Temperatures in ${data.title} are ranging from ${today.min_temp} and ${today.max_temp}`);
+            })
+            .catch(error => {
+                console.log(error);
+            });
+        }
+        getWeather(2487956);
+        getWeather(2295019);
